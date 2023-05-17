@@ -6,7 +6,7 @@ before_install:
   - docker build -t girish/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run girish/react-test npm test -- --coverage
+  - docker run -e CI=true gsharanappa/react-test npm test
 
 after_success:
   - docker build -t girish/multi-client ./client
