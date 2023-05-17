@@ -8,11 +8,11 @@ before_install:
 script:
   - docker run girish/react-test npm test -- --coverage
 
-after_success:
-  - docker build -t girish/multi-client ./client
-  - docker build -t girish/multi-nginx ./nginx
-  - docker build -t girish/multi-server ./server
-  - docker build -t girish/multi-worker ./worker
+# after_success:
+#   - docker build -t girish/multi-client ./client
+#   - docker build -t girish/multi-nginx ./nginx
+#   - docker build -t girish/multi-server ./server
+#   - docker build -t girish/multi-worker ./worker
 
-  #login to the docker cli
-  -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#   #login to the docker cli
+#   -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
