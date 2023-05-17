@@ -3,22 +3,22 @@ services:
   - docker
 
 before_install:
-  - docker build -t girish/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t gsharanappa/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true gsharanappa/react-test npm test
 
 after_success:
-  - docker build -t girish/multi-client ./client
-  - docker build -t girish/multi-nginx ./nginx
-  - docker build -t girish/multi-server ./server
-  - docker build -t girish/multi-worker ./worker
+  - docker build -t gsharanappa/multi-client ./client
+  - docker build -t gsharanappa/multi-nginx ./nginx
+  - docker build -t gsharanappa/multi-server ./server
+  - docker build -t gsharanappa/multi-worker ./worker
 
   #login to the docker cli
   -echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   #Take those images and push them to docker hub
-  - docker push girish/multi-client
-  - docker push girish/multi-nginx
-  - docker push girish/multi-server
-  - docker push girish/multi-worker
+  - docker push gsharanappa/multi-client
+  - docker push gsharanappa/multi-nginx
+  - docker push gsharanappa/multi-server
+  - docker push gsharanappa/multi-worker
